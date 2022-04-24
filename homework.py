@@ -73,11 +73,13 @@ class Running(Training):
                  action: int,
                  duration: float,
                  weight: float) -> None:
-        super().__init__(action, duration, weight)         
-    
+        super().__init__(action, duration, weight)
+
     def get_spent_calories(self) -> float:
-        return((self.coeff_calorie_1 * self.get_mean_speed() - self.coeff_calorie_2) 
-                * self.weight / self.M_IN_KM * self.duration * 60)
+        return((self.coeff_calorie_1 * self.get_mean_speed()
+               - self.coeff_calorie_2)
+               * self.weight / self.M_IN_KM
+               * self.duration * 60)
 
 
 class SportsWalking(Training):
@@ -111,7 +113,7 @@ class Swimming(Training):
     speed2: int = 2
     LEN_STEP: float = 1.38
     training_type = 'SWM'
-    
+
     def __init__(self,
                  action: int,
                  duration: float,
