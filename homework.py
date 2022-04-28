@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Type
 
 
 class InfoMessage:
@@ -136,11 +136,11 @@ class Swimming(Training):
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
 
-    training_types: Dict = [
-        ('SWM', Swimming),
-        ('RUN', Running),
-        ('WLK', SportsWalking),
-    ]
+    training_types: Dict[str, Type[Training]] = {
+        'SWM': Swimming,
+        'RUN': Running,
+        'WLK': SportsWalking
+    }
     if workout_type not in training_types:
         raise ValueError("Значения ключа нет в словаре")
     return training_types[workout_type](*data)
